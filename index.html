@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Travel Countries Preference Questionnaire</title>
+  </head>
+  <body>
+    <h1>Travel Countries Preference Questionnaire</h1>
+    <form id="questionnaire" method="POST" action="/submit">
+      <label for="location1">Location 1:</label>
+      <input type="text" id="location1" name="location1"><br><br>
+
+      <label for="location2">Location 2:</label>
+      <input type="text" id="location2" name="location2"><br><br>
+
+      <label for="location3">Location 3:</label>
+      <input type="text" id="location3" name="location3"><br><br>
+
+      <label for="location4">Location 4:</label>
+      <input type="text" id="location4" name="location4"><br><br>
+
+      <label for="location5">Location 5:</label>
+      <input type="text" id="location5" name="location5"><br><br>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      const form = document.getElementById('questionnaire');
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+
+        const data = {
+          location1: formData.get('location1'),
+          location2: formData.get('location2'),
+          location3: formData.get('location3'),
+          location4: formData.get('location4'),
+          location5: formData.get('location5')
+        };
+
+        const response = await fetch('/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        console.log(result);
+      });
+    </script>
+  </body>
+</html>
