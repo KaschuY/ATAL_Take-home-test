@@ -18,36 +18,25 @@
       <input type="checkbox" name="countries[]" value="Philippines"> Philippines<br>
       <input type="checkbox" name="countries[]" value="Myanmar"> Myanmar<br>
       <br>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" onclick="submitForm()">
     </form>
 
     <script>
-      const form = document.getElementById('questionnaire');
-
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const formData = new FormData(event.target);
-
-        const data = {
-          location1: formData.get('location1'),
-          location2: formData.get('location2'),
-          location3: formData.get('location3'),
-          location4: formData.get('location4'),
-          location5: formData.get('location5')
-        };
-
-        const response = await fetch('/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-        console.log(result);
-      });
+      function submitForm() {
+        // Get all checked checkboxes
+        var checkboxes = document.querySelectorAll('input[name="countries[]"]:checked');
+        // Create an array of the selected countries
+        var countries = Array.from(checkboxes, x => x.value);
+        // Limit the number of selections to 5
+        countries = countries.slice(0, 5);
+        // Create a JSON object with the selected countries
+        var data = { "countries": countries };
+        // Send the JSON object to the Flask backend using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/submit");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify(data));
+      }
     </script>
   </body>
 </html>

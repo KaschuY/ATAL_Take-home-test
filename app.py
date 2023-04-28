@@ -16,6 +16,7 @@ def index():
 def save_locations():
     # Get the JSON data from the request body
     data = request.get_json()
+    print(data)
 
     # Save the data to the MongoDB collection
     collection.insert_one(data)
