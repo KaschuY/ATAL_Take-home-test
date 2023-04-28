@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -22,3 +22,6 @@ def save_locations():
 
     # Return a success message to the client
     return {'message': 'Locations saved to MongoDB!'}
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=5000, debug =True)

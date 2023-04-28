@@ -5,23 +5,20 @@
   </head>
   <body>
     <h1>Travel Countries Preference Questionnaire</h1>
-    <form id="questionnaire" method="POST" action="/submit">
-      <label for="location1">Location 1:</label>
-      <input type="text" id="location1" name="location1"><br><br>
-
-      <label for="location2">Location 2:</label>
-      <input type="text" id="location2" name="location2"><br><br>
-
-      <label for="location3">Location 3:</label>
-      <input type="text" id="location3" name="location3"><br><br>
-
-      <label for="location4">Location 4:</label>
-      <input type="text" id="location4" name="location4"><br><br>
-
-      <label for="location5">Location 5:</label>
-      <input type="text" id="location5" name="location5"><br><br>
-
-      <button type="submit">Submit</button>
+    <form action="/submit" method="POST">
+      <p>Please select up to 5 countries:</p>
+      <input type="checkbox" name="countries[]" value="Japan"> Japan<br>
+      <input type="checkbox" name="countries[]" value="Korea"> Korea<br>
+      <input type="checkbox" name="countries[]" value="Singapore"> Singapore<br>
+      <input type="checkbox" name="countries[]" value="Thailand"> Thailand<br>
+      <input type="checkbox" name="countries[]" value="Indonesia"> Indonesia<br>
+      <input type="checkbox" name="countries[]" value="Malaysia"> Malaysia<br>
+      <input type="checkbox" name="countries[]" value="Vietnam"> Vietnam<br>
+      <input type="checkbox" name="countries[]" value="Cambodia"> Cambodia<br>
+      <input type="checkbox" name="countries[]" value="Philippines"> Philippines<br>
+      <input type="checkbox" name="countries[]" value="Myanmar"> Myanmar<br>
+      <br>
+      <input type="submit" value="Submit">
     </form>
 
     <script>
